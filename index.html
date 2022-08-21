@@ -61,7 +61,7 @@
             }
             index = 0;
             document.querySelector("#number-key").innerHTML = (index+1) + "/" + (NoKey);
-            $(window).scrollTop($("p:contains('" + txtSearch + "'):first").offset().top - 50);
+            $(window).scrollTop($("p:contains('" + txtSearch + "'):first").offset().top - 80);
 
         }
         function highlight() {
@@ -79,7 +79,7 @@
                 if (index > NoKey - 1) {
                     index = 0;
                 }
-                $(window).scrollTop($("p:contains('" + txtSearch + "')").eq(index).offset().top - 50);
+                $(window).scrollTop($("p:contains('" + txtSearch + "')").eq(index).offset().top - 80);
                 document.querySelector("#number-key").innerHTML = index+1 + "/" + (NoKey);
 
             } else {
@@ -87,7 +87,7 @@
                 if (index < 0) {
                     index = NoKey - 1;
                 }
-                $(window).scrollTop($("p:contains('" + txtSearch + "')").eq(index).offset().top - 50);
+                $(window).scrollTop($("p:contains('" + txtSearch + "')").eq(index).offset().top - 80);
                 document.querySelector("#number-key").innerHTML = index+1 + "/" + (NoKey);
 
 

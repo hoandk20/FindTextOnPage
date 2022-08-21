@@ -2,6 +2,9 @@
 .convert{
     float: right;
 }
+#search{
+    width: 280px;
+}
 .search-box{
     display: flex;
     margin: 0 auto;
