@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="convert">
+            <a href="https://www.textfixer.com/html/convert-text-html.php" target="_blank">CV</a>
+        </div>
+        <div class="search-box">
+            <input id="search" type="text" placeholder="search">
+            <input type="button" value="Q" onclick="search()">
+            <p id="number-key">0/0</p><button class="icon" onclick="move('up')">▲</button><button class="icon"
+                onclick="move('down')">▼</button>
+        </div>
+        <div class="input-box" id="input-box">
+            <div class="text-input">
+                <textarea id="input_text" type="text" placeholder="key"></textarea>
+                <input type="button" value="input" onclick="input()">
+            </div>
+        </div>
+        <div class="boder-content">
+            <div class="content" id="content"></div>
+        </div>
+    </div>
+    <script>
+        var txtSearch = "";
+        var index = 0;
+        var NoKey;
+        var txtContent = "";
+        function input() {
+            var txtinput = document.getElementById("input_text");
+            var content = document.getElementById("content");
+            txtContent = txtinput.value;
+            content.innerHTML = txtContent;
+            document.getElementById("input-box").style.display = "none";
+
+        }
+        function search() {
+
+            txtSearch = document.getElementById("search").value;
+            if (txtSearch == "") {
+                return;
+            }
+            document.getElementById("content").innerHTML = highlight();
+            NoKey = $("p:contains('" + txtSearch + "')").length;
+            if (NoKey == 0) {
+                document.querySelector("#number-key").innerHTML = "0/0";
+                index = 0;
+                return;
+            }
+            index = 0;
+            document.querySelector("#number-key").innerHTML = (index+1) + "/" + (NoKey);
+            $(window).scrollTop($("p:contains('" + txtSearch + "'):first").offset().top - 50);
+
+        }
+        function highlight() {
+            let text = txtContent;
+            let re = new RegExp(txtSearch, "g"); // search for all instances
+            let newText = text.replace(re, `<mark>${txtSearch}</mark>`);
+            return newText;
+        }
+        function move(type) {
+            if (NoKey == 0) {
+                return;
+            }
+            if (type == "up") {
+                index++;
+                if (index > NoKey - 1) {
+                    index = 0;
+                }
+                $(window).scrollTop($("p:contains('" + txtSearch + "')").eq(index).offset().top - 50);
+                document.querySelector("#number-key").innerHTML = index+1 + "/" + (NoKey);
+
+            } else {
+                index--;
+                if (index < 0) {
+                    index = NoKey - 1;
+                }
+                $(window).scrollTop($("p:contains('" + txtSearch + "')").eq(index).offset().top - 50);
+                document.querySelector("#number-key").innerHTML = index+1 + "/" + (NoKey);
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

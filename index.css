@@ -1,0 +1,61 @@
+
+.convert{
+    float: right;
+}
+.search-box{
+    display: flex;
+    margin: 0 auto;
+    width: 60%;
+    min-width: 260px;
+    position: fixed;
+    background-color: white;
+}
+.highlight {
+    background-color: yellow;
+  }
+.icon{
+    height: 30px;
+    width: 30px;
+  
+}
+button{
+    cursor: pointer;
+}
+#number-key{
+    margin-left: 10px;
+    font-family: monospace;
+    color: red;
+    margin-right: 10px;
+}
+.container{
+    width: 100%;
+}
+.text-area{
+    width: 100%;
+}
+.text-input{
+    position: fixed;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 500px;
+    padding-top: 50px;
+}
+.content{
+    white-space: pre-line;
+    word-break: normal;
+    
+}
+.content p{
+    font-family: monospace;
+}
+.boder-content{
+    padding-top: 50px;
+    width: 50%;
+    min-width: 500px;
+    
+}
+.input-box{
+    margin: 0 auto;
+    width: 30%;
+    min-width: 240px;
+}
